@@ -6,28 +6,28 @@ export const products: Product[] = [
     name: "Premium Running Shoes",
     price: 3499,
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80",
-    sellerId: "admin",
+    sellerId: "",
   },
   {
     id: 2,
     name: "Classic Cotton T-Shirt",
     price: 799,
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80",
-    sellerId: "admin",
+    sellerId: "",
   },
   {
     id: 3,
     name: "Leather Crossbody Bag",
     price: 2199,
     image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80",
-    sellerId: "admin",
+    sellerId: "",
   },
   {
     id: 4,
     name: "Wireless Headphones",
     price: 5999,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
-    sellerId: "admin",
+    sellerId: "",
   },
 ];
 

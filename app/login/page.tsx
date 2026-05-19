@@ -6,25 +6,18 @@ import Link from "next/link";
 
 type Role = "buyer" | "seller";
 
-// ── Default credentials ──────────────────────────────────────────────────────
-const CREDENTIALS: Record<Role, { email: string; password: string }> = {
-  buyer: { email: "buyer@shoplux.com", password: "buyer123" },
-  seller: { email: "seller@shoplux.com", password: "seller123" },
-};
-
 export default function LoginPage() {
   const router = useRouter();
   const [role, setRole] = useState<Role>("buyer");
-  const [email, setEmail] = useState(CREDENTIALS.buyer.email);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Switch role and auto-fill email
   function handleRoleSwitch(newRole: Role) {
     setRole(newRole);
-    setEmail(CREDENTIALS[newRole].email);
+    setEmail("");
     setPassword("");
     setError("");
   }
@@ -249,7 +242,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder={`${role}@shoplux.com`}
+              placeholder="you@example.com"
               style={{
                 width: "100%",
                 padding: "12px 14px",
@@ -396,72 +389,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Divider */}
-        <div
-          style={{
-            margin: "24px 0 20px",
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-          }}
-        >
-          <div
-            style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }}
-          />
-          <span style={{ fontSize: 12, color: "#464555" }}>
-            DEFAULT CREDENTIALS
-          </span>
-          <div
-            style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }}
-          />
-        </div>
-
-        {/* Credential hint box */}
-        <div
-          style={{
-            background: "rgba(108,99,255,0.06)",
-            border: "1px solid rgba(108,99,255,0.18)",
-            borderRadius: 12,
-            padding: "14px 16px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 8,
-          }}
-        >
-          {(["buyer", "seller"] as Role[]).map((r) => (
-            <div
-              key={r}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                opacity: role === r ? 1 : 0.45,
-                transition: "opacity 0.2s",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: "#c4c0ff",
-                  textTransform: "capitalize",
-                  letterSpacing: "0.04em",
-                }}
-              >
-                {r === "buyer" ? "🛒" : "🏪"} {r}
-              </span>
-              <span style={{ fontSize: 11, color: "#918fa1", fontFamily: "monospace" }}>
-                {CREDENTIALS[r].email} /{" "}
-                <span style={{ color: "#c4c0ff" }}>
-                  {CREDENTIALS[r].password}
-                </span>
-              </span>
-            </div>
-          ))}
-          <p style={{ margin: 0, fontSize: 11, color: "#464555", marginTop: 4 }}>
-            Click a credential row's role to auto-fill the email.
-          </p>
-        </div>
       </div>
     </div>
   );

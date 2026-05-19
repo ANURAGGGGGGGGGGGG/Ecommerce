@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import Product from "@/models/Product";
-import User from "@/models/User";
+
 
 const SEED_PRODUCTS = [
   {
@@ -42,11 +42,6 @@ const SEED_PRODUCTS = [
   },
 ];
 
-const SEED_USERS = [
-  { email: "buyer@shoplux.com", password: "buyer123", role: "buyer" },
-  { email: "seller@shoplux.com", password: "seller123", role: "seller" },
-];
-
 export async function POST() {
   try {
     await dbConnect();
@@ -55,12 +50,6 @@ export async function POST() {
     const productCount = await Product.countDocuments();
     if (productCount === 0) {
       await Product.insertMany(SEED_PRODUCTS);
-    }
-
-    // Seed users
-    const userCount = await User.countDocuments();
-    if (userCount === 0) {
-      await User.insertMany(SEED_USERS);
     }
 
     return NextResponse.json({

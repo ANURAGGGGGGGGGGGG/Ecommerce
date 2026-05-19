@@ -130,7 +130,7 @@ export default function Home() {
         }}
       >
         <p style={{ margin: 0, fontSize: 13, color: "#464555" }}>
-          © 2025 ShopLux. All rights reserved. Crafted with ♥
+          © 2026 ShopLux. All rights reserved. Crafted with ♥
         </p>
       </footer>
     </div>
